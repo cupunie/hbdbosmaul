@@ -2,88 +2,61 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>BOS MAUL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>BOS MAUL - Happy Birthday</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Impact&display=swap" rel="stylesheet">
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html {
-            margin: 0;
-            padding: 0;
             height: 100%;
             overflow-x: hidden;
+            background: #000;
         }
         .background-video {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             object-fit: cover;
             z-index: -2;
-            filter: brightness(0.75) contrast(1.1);
+            filter: brightness(0.7) contrast(1.15);
         }
 
-        /* Corner Images - Mobile Friendly */
         .corner-image {
             position: fixed;
-            width: 220px;
-            height: 220px;
-            border-radius: 20px;
+            width: 180px;
+            height: 180px;
+            border-radius: 18px;
             object-fit: cover;
-            border: 5px solid rgba(255, 215, 0, 0.9);
-            box-shadow: 0 0 50px #ffd700,
-                        0 0 100px #c026d3;
-            z-index: 20;
+            border: 5px solid #fcd34d;
+            box-shadow: 0 0 40px #facc15,
+                        0 0 80px #c026d3;
+            z-index: 30;
             opacity: 0.95;
-            pointer-events: none;
         }
-
-        @media (min-width: 768px) {
-            .corner-image {
-                width: 320px;
-                height: 320px;
-            }
-            .top-left   { top: 20px; left: 20px; }
-            .top-right  { top: 20px; right: 20px; }
-            .bottom-left{ bottom: 20px; left: 20px; }
-            .bottom-right{ bottom: 20px; right: 20px; }
-        }
-
         .top-left   { top: 12px; left: 12px; }
         .top-right  { top: 12px; right: 12px; }
         .bottom-left{ bottom: 12px; left: 12px; }
         .bottom-right{ bottom: 12px; right: 12px; }
 
-        .content {
+        @media (min-width: 768px) {
+            .corner-image { width: 280px; height: 280px; }
+            .top-left   { top: 30px; left: 30px; }
+            .top-right  { top: 30px; right: 30px; }
+            .bottom-left{ bottom: 30px; left: 30px; }
+            .bottom-right{ bottom: 30px; right: 30px; }
+        }
+
+        .main-content {
             position: relative;
             z-index: 10;
             min-height: 100vh;
+            padding: 20px 15px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px 12px;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(75,0,130,0.5));
-        }
-
-        .video-container {
-            width: 100%;
-            max-width: 520px;
-            margin-bottom: 24px;
-        }
-
-        .meme-text {
-            font-family: 'Impact', sans-serif;
-            -webkit-text-stroke: 3px black;
-            text-shadow: 0 0 20px #ffd700,
-                         4px 4px 0 #000,
-                        -4px -4px 0 #000;
-            animation: floatText 3s ease-in-out infinite;
-        }
-        @keyframes floatText {
-            0%, 100% { transform: translateY(0) rotate(-4deg); }
-            50% { transform: translateY(-20px) rotate(4deg); }
+            background: rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
@@ -99,38 +72,40 @@
     <img src="may.jpg" class="corner-image bottom-left" alt="">
     <img src="bro.jpg" class="corner-image bottom-right" alt="">
 
-    <div class="content">
-        <!-- Video Tengah -->
-        <div class="video-container">
-            <div class="aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl relative border-4 border-yellow-400">
+    <div class="main-content">
+        <!-- Video Utama -->
+        <div class="w-full max-w-md mb-6">
+            <div class="aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl border-4 border-yellow-400 relative">
                 <video class="w-full h-full object-cover" controls autoplay muted loop playsinline>
                     <source src="https://files.catbox.moe/htyaqh.mp4" type="video/mp4">
                 </video>
-                <div class="absolute top-4 left-4 bg-red-600 text-white px-5 py-2 rounded-full font-bold text-xl animate-pulse z-10">
+                <div class="absolute top-3 left-3 bg-red-600 text-white text-sm font-bold px-4 py-1 rounded-full">
                     🔥 BOS MAUL GUA 🔥
                 </div>
             </div>
         </div>
 
         <!-- Text -->
-        <div class="text-center w-full max-w-md">
-            <div class="inline-block bg-black/90 backdrop-blur-md px-8 py-5 rounded-3xl border-4 border-yellow-400 mb-4">
-                <div class="text-yellow-400 text-4xl md:text-5xl meme-text">HAPPY BIRTHDAY</div>
-                <h1 class="text-4xl md:text-5xl font-bold meme-text text-yellow-300 mt-1">
+        <div class="text-center mb-8">
+            <div class="bg-black/80 border-4 border-yellow-400 rounded-3xl px-8 py-6 inline-block">
+                <div class="text-yellow-300 text-4xl font-black tracking-wider" style="text-shadow: 3px 3px 0 #000, -3px -3px 0 #000;">
+                    HAPPY BIRTHDAY
+                </div>
+                <div class="text-yellow-400 text-5xl font-black mt-1" style="text-shadow: 4px 4px 0 #000;">
                     BOS MAULS<br>X AMAY
-                </h1>
+                </div>
             </div>
         </div>
 
         <!-- Tombol -->
-        <div class="flex gap-3 mt-8">
+        <div class="flex gap-4">
             <button onclick="toggleMusic()" id="musicBtn"
-                    class="bg-gradient-to-r from-purple-500 to-pink-500 px-7 py-4 rounded-2xl font-bold text-base shadow-lg active:scale-95 transition">
-                🎵 Musik ON
+                    class="bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 py-4 rounded-2xl font-bold text-white shadow-xl active:scale-95">
+                🎵 Putar Musik
             </button>
             
             <button onclick="launchCrazyConfetti()" 
-                    class="bg-gradient-to-r from-yellow-400 to-orange-500 px-7 py-4 rounded-2xl font-bold text-base shadow-lg active:scale-95 transition text-black">
+                    class="bg-gradient-to-r from-yellow-400 to-orange-500 px-8 py-4 rounded-2xl font-bold text-black shadow-xl active:scale-95">
                 🎉 Fireworks
             </button>
         </div>
@@ -150,28 +125,28 @@
         function toggleMusic() {
             if (isPlaying) {
                 music.pause();
-                musicBtn.textContent = "🎵 Musik ON";
+                musicBtn.innerHTML = "🎵 Putar Musik";
             } else {
-                music.play();
-                musicBtn.textContent = "⏸️ Musik OFF";
+                music.play().then(() => {
+                    musicBtn.innerHTML = "⏸️ Matikan Musik";
+                }).catch(() => {
+                    alert("Klik sekali lagi untuk memutar musik 🎵");
+                });
             }
             isPlaying = !isPlaying;
         }
 
         function launchCrazyConfetti() {
-            for (let i = 0; i < 7; i++) {
+            for (let i = 0; i < 8; i++) {
                 setTimeout(() => {
-                    confetti({
-                        particleCount: 220,
-                        spread: 90,
-                        origin: { y: 0.7 }
-                    });
-                }, i * 130);
+                    confetti({ particleCount: 180, spread: 80, origin: { y: 0.6 } });
+                }, i * 100);
             }
         }
 
+        // Auto confetti
         window.onload = () => {
-            setTimeout(launchCrazyConfetti, 1000);
+            setTimeout(launchCrazyConfetti, 800);
         };
     </script>
 </body>
