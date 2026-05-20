@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOS MAUL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Impact&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            filter: brightness(0.75) contrast(1.1);
+        }
+
+        /* 4 FOTO POJOK */
+        .corner-image {
+            position: fixed;
+            width: 320px;
+            height: 320px;
+            border-radius: 24px;
+            object-fit: cover;
+            border: 6px solid rgba(255, 215, 0, 0.9);
+            box-shadow: 0 0 60px #ffd700,
+                        0 0 120px #c026d3,
+                        0 0 180px #7e22ce;
+            z-index: 20;
+            opacity: 0.95;
+            pointer-events: none;
+        }
+        .top-left   { top: 20px; left: 20px; }
+        .top-right  { top: 20px; right: 20px; }
+        .bottom-left{ bottom: 20px; left: 20px; }
+        .bottom-right{ bottom: 20px; right: 20px; }
+
+        @media (max-width: 768px) {
+            .corner-image {
+                width: 180px;
+                height: 180px;
+            }
+            .top-left   { top: 10px; left: 10px; }
+            .top-right  { top: 10px; right: 10px; }
+            .bottom-left{ bottom: 10px; left: 10px; }
+            .bottom-right{ bottom: 10px; right: 10px; }
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(75,0,130,0.4));
+        }
+
+        .meme-text {
+            font-family: 'Impact', sans-serif;
+            -webkit-text-stroke: 4px black;
+            text-shadow: 0 0 25px #ffd700,
+                         5px 5px 0 #000,
+                        -5px -5px 0 #000;
+            animation: floatText 3s ease-in-out infinite;
+        }
+        @keyframes floatText {
+            0%, 100% { transform: translateY(0) rotate(-4deg); }
+            50% { transform: translateY(-25px) rotate(4deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <video class="background-video" autoplay muted loop playsinline>
+        <source src="https://files.catbox.moe/8v06yd.mp4" type="video/mp4">
+    </video>
+
+    <!-- 4 FOTO POJOK -->
+    <img src="bandng.jpg" class="corner-image top-left" alt="">
+    <img src="op.jpg" class="corner-image top-right" alt="">
+    <img src="may.jpg" class="corner-image bottom-left" alt="">
+    <img src="bro.jpg" class="corner-image bottom-right" alt="">
+
+    <div class="content">
+        <!-- Video Tengah -->
+        <div class="max-w-[1000px] w-full px-4">
+            <div class="aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl relative mx-auto border-4 border-yellow-400">
+                <video class="w-full h-full object-cover" controls autoplay muted loop playsinline>
+                    <source src="https://files.catbox.moe/htyaqh.mp4" type="video/mp4">
+                </video>
+                <div class="absolute top-5 left-5 bg-red-600 text-white px-6 py-2.5 rounded-full font-bold text-2xl animate-pulse z-10">
+                    🔥 BOS MAUL GUA 🔥
+                </div>
+            </div>
+        </div>
+
+        <!-- Text -->
+        <div class="text-center mt-8 px-4">
+            <div class="inline-block bg-black/90 backdrop-blur px-12 py-5 rounded-3xl border-4 border-yellow-400">
+                <div class="text-yellow-400 text-5xl md:text-6xl meme-text">HAPPY BIRTHDAY</div>
+                <h1 class="text-5xl md:text-6xl font-bold meme-text text-yellow-300 mt-2">
+                    BOS MAULS<br>X AMAY
+                </h1>
+            </div>
+        </div>
+
+        <!-- Tombol Musik & Fireworks -->
+        <div class="flex gap-4 mt-10">
+            <button onclick="toggleMusic()" id="musicBtn"
+                    class="bg-gradient-to-r from-purple-500 to-pink-500 px-8 py-4 rounded-2xl font-bold text-lg shadow-lg hover:scale-105 transition">
+                🎵 Musik ON
+            </button>
+            
+            <button onclick="launchCrazyConfetti()" 
+                    class="bg-gradient-to-r from-yellow-400 to-orange-500 px-8 py-4 rounded-2xl font-bold text-lg shadow-lg hover:scale-105 transition text-black">
+                🎉 Fireworks
+            </button>
+        </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="https://files.catbox.moe/put-your-music-link-here.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script>
+        const music = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.textContent = "🎵 Musik ON";
+            } else {
+                music.play().catch(() => {});
+                musicBtn.textContent = "⏸️ Musik OFF";
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function launchCrazyConfetti() {
+            const colors = ['#ffd700', '#ff00ff', '#00ffff', '#ff1493', '#39ff14'];
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    confetti({ particleCount: 250, spread: 100, origin: { y: Math.random() }, colors });
+                }, i * 120);
+            }
+        }
+
+        window.onload = () => {
+            setTimeout(launchCrazyConfetti, 800);
+            setTimeout(launchCrazyConfetti, 2000);
+        };
+    </script>
+</body>
+</html>
